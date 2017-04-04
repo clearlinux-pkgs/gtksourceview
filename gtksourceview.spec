@@ -4,7 +4,7 @@
 #
 Name     : gtksourceview
 Version  : 3.20.3
-Release  : 1
+Release  : 2
 URL      : https://download.gnome.org/core/3.20/3.20.2/sources/gtksourceview-3.20.3.tar.xz
 Source0  : https://download.gnome.org/core/3.20/3.20.2/sources/gtksourceview-3.20.3.tar.xz
 Summary  : Libraries and include files for GtkSourceView
@@ -80,6 +80,7 @@ locales components for the gtksourceview package.
 
 %build
 export LANG=C
+export SOURCE_DATE_EPOCH=1491322598
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -91,6 +92,7 @@ export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
+export SOURCE_DATE_EPOCH=1491322598
 rm -rf %{buildroot}
 %make_install
 %find_lang gtksourceview-3.0
@@ -100,7 +102,8 @@ rm -rf %{buildroot}
 
 %files data
 %defattr(-,root,root,-)
-/usr/share/gir-1.0/GtkSource-3.0.gir
+/usr/lib64/girepository-1.0/GtkSource-3.0.typelib
+/usr/share/gir-1.0/*.gir
 /usr/share/gtksourceview-3.0/language-specs/R.lang
 /usr/share/gtksourceview-3.0/language-specs/actionscript.lang
 /usr/share/gtksourceview-3.0/language-specs/ada.lang
@@ -274,9 +277,8 @@ rm -rf %{buildroot}
 /usr/include/gtksourceview-3.0/gtksourceview/gtksourceversion.h
 /usr/include/gtksourceview-3.0/gtksourceview/gtksourceview-typebuiltins.h
 /usr/include/gtksourceview-3.0/gtksourceview/gtksourceview.h
-/usr/lib64/*.so
-/usr/lib64/girepository-1.0/GtkSource-3.0.typelib
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/libgtksourceview-3.0.so
+/usr/lib64/pkgconfig/gtksourceview-3.0.pc
 
 %files doc
 %defattr(-,root,root,-)
@@ -359,8 +361,9 @@ rm -rf %{buildroot}
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/*.so.*
+/usr/lib64/libgtksourceview-3.0.so.1
+/usr/lib64/libgtksourceview-3.0.so.1.6.0
 
-%files locales -f gtksourceview-3.0.lang 
+%files locales -f gtksourceview-3.0.lang
 %defattr(-,root,root,-)
 
