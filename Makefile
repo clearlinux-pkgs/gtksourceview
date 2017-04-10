@@ -1,5 +1,5 @@
 PKG_NAME := gtksourceview
-URL := https://download.gnome.org/core/3.20/3.20.2/sources/gtksourceview-3.20.3.tar.xz
+URL := https://download.gnome.org/sources/gtksourceview/3.24/gtksourceview-3.24.1.tar.xz
 
 
 include ../common/Makefile.common
