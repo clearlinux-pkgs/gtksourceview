@@ -4,7 +4,7 @@
 #
 Name     : gtksourceview
 Version  : 3.24.3
-Release  : 10
+Release  : 11
 URL      : https://download.gnome.org/sources/gtksourceview/3.24/gtksourceview-3.24.3.tar.xz
 Source0  : https://download.gnome.org/sources/gtksourceview/3.24/gtksourceview-3.24.3.tar.xz
 Summary  : Libraries and include files for GtkSourceView
@@ -23,6 +23,7 @@ BuildRequires : gtk-doc-dev
 BuildRequires : itstool
 BuildRequires : libxslt-bin
 BuildRequires : perl(XML::Parser)
+BuildRequires : pkgconfig(gio-2.0)
 BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(libxml-2.0)
@@ -85,7 +86,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1497818501
+export SOURCE_DATE_EPOCH=1503071833
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -104,7 +105,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1497818501
+export SOURCE_DATE_EPOCH=1503071833
 rm -rf %{buildroot}
 %make_install
 %find_lang gtksourceview-3.0
