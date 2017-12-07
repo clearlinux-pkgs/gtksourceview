@@ -4,7 +4,7 @@
 #
 Name     : gtksourceview
 Version  : 3.24.5
-Release  : 14
+Release  : 15
 URL      : https://download.gnome.org/sources/gtksourceview/3.24/gtksourceview-3.24.5.tar.xz
 Source0  : https://download.gnome.org/sources/gtksourceview/3.24/gtksourceview-3.24.5.tar.xz
 Summary  : Libraries and include files for GtkSourceView
@@ -31,6 +31,7 @@ BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(libxml-2.0)
 BuildRequires : python3
 BuildRequires : valgrind
+Patch1: cve-2017-14108.patch
 
 %description
 GtkSourceview is a library that adds syntax highlighting,
@@ -83,20 +84,21 @@ locales components for the gtksourceview package.
 
 %prep
 %setup -q -n gtksourceview-3.24.5
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1506867555
+export SOURCE_DATE_EPOCH=1512684739
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
-export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition "
+export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -fstack-protector-strong "
+export FCFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -fstack-protector-strong "
+export FFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -fstack-protector-strong "
+export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -fstack-protector-strong "
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -108,7 +110,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1506867555
+export SOURCE_DATE_EPOCH=1512684739
 rm -rf %{buildroot}
 %make_install
 %find_lang gtksourceview-3.0
