@@ -4,7 +4,7 @@
 #
 Name     : gtksourceview
 Version  : 3.24.6
-Release  : 17
+Release  : 18
 URL      : https://download.gnome.org/sources/gtksourceview/3.24/gtksourceview-3.24.6.tar.xz
 Source0  : https://download.gnome.org/sources/gtksourceview/3.24/gtksourceview-3.24.6.tar.xz
 Summary  : Libraries and include files for GtkSourceView
