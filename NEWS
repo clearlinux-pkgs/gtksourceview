@@ -1,36 +1,118 @@
-News in 3.24.6
---------------
+News in 4.0.0, 2018-03-10
+-------------------------
+* GtkSourceView class: respect the GtkTextView:accepts-tab property.
+* New syntax highlighting definition file for: Groovy and Tera templates.
+* Improvements to the syntax highlighting of: Erlang and Fortran.
+* Provide an Uncrustify configuration file for the GtkSourceView C coding style.
+* Various other improvements and small fixes.
+* Translation updates.
+
+News in 3.99.7, 2017-12-09
+--------------------------
+* Rename gtk_source_completion_show() to gtk_source_completion_start().
+* Drop gconstructor.h, add gtk_source_init() and gtk_source_finalize().
+* Improve documentation.
 * New syntax highlighting definition file for: logcat.
-* Improvements to the syntax highlighting of: Python and reStructuredText.
+* Improvements to the syntax highlighting of: Python, reStructuredText and
+  CMake.
 * Improvements to the Visual Studio builds.
 * Translation updates.
 
-News in 3.24.5
---------------
-* Bug fix in gtk_source_view_indent_lines().
-* Improvements to the Visual Studio builds.
+News in 3.99.6, 2017-10-15
+--------------------------
+* Reduce a lot the number of translatable strings (especially in *.lang files),
+  to translate only what makes sense. 630 -> 93 translatable strings!
+* Build: remove ENABLE_NLS option, always support gettext translation, to
+  simplify the code.
+* Fix bug in gtk_source_view_indent_lines().
+* Fix bug to read GtkSourceView 4 *.lang and style scheme files, not those from
+  GtkSourceView 3.
+* Code refactorings to prepare for the namespace change.
 * Improvements to the syntax highlighting of: Vala.
-* Translation updates.
-
-News in 3.24.4
---------------
-* Fix bug when GtkSourceView:indent-width and :tab-width are equal.
-* New syntax highlighting definition files for: Swift, Maxima and Kotlin.
-* Improvements to the syntax highlighting of: CSS.
+* Improvements to the Visual Studio builds.
 * Various other small improvements.
 * Translation updates.
 
-News in 3.24.3
---------------
-* Improvements to the syntax highlighting of: SPARQL, CSS, BibTeX and LaTeX.
-
-News in 3.24.2
---------------
+News in 3.99.5, 2017-09-06
+--------------------------
 * Avoid type redefinitions.
+* Fix bug when GtkSourceView:indent-width and :tab-width are equal.
+* New syntax highlighting definition file for: Swift, Maxima and Kotlin.
+* Improvements to the syntax highlighting of: sparql, CSS, bibtex and LaTeX.
 * jade.lang: add *.pug to globs.
-* Bug fix in LaTeX syntax highlighting.
-* Various other small bug fixes.
+* Various other small improvements.
 * Translation updates.
+
+News in 3.99.4
+--------------
+* The API of the GtkSourceView::move-lines keybinding signal has been
+  simplified: the copy parameter has been removed; and the count parameter has
+  been replaced by the down boolean.
+* Force visual word movements for RTL text with Ctrl+left/right.
+* Improvements to the Visual Studio builds and add support for Visual Studio
+  2017.
+* Improvements to the syntax highlighting of: Rust and LaTeX.
+* Add mimetype to python3.lang.
+* Misc bug fixes.
+* Various other small improvements.
+* Translation updates.
+
+News in 3.99.3
+--------------
+
+This is an intermediate version towards GtkSourceView 4.0. GtkSourceView 4.0
+will still depend on GTK+ 3, but the release date is not yet determined. See
+the roadmap for more details:
+https://wiki.gnome.org/Projects/GtkSourceView/RoadMap
+
+* Bug fix in GtkSourceGutterRendererPixbuf.
+* Fixes for bugs found by Coverity.
+* Build fixes on MS Windows.
+* New syntax highlighting definition files for: ABNF, HAXE and Django template.
+* Improvements to the syntax highlighting of: Meson, CSS, ini, Rust and
+  JavaScript.
+* Improvements to the build system.
+* Translation updates.
+
+News in 3.99.2
+--------------
+
+This is an intermediate version towards GtkSourceView 4.0. GtkSourceView 4.0
+will still depend on GTK+ 3, but the release date is not yet determined.
+
+* gtk_source_completion_item_new2() has been renamed to
+  gtk_source_completion_item_new().
+* gtk_source_search_context_forward2() has been renamed to
+  gtk_source_search_context_forward().
+* gtk_source_search_context_forward_finish2() has been renamed to
+  gtk_source_search_context_forward_finish().
+* gtk_source_search_context_backward2() has been renamed to
+  gtk_source_search_context_backward().
+* gtk_source_search_context_backward_finish2() has been renamed to
+  gtk_source_search_context_backward_finish().
+* gtk_source_search_context_replace2() has been renamed to
+  gtk_source_search_context_replace().
+* The GtkSourceSearchContext:settings property is now construct-only.
+
+News in 3.99.1
+--------------
+
+This is an intermediate version towards GtkSourceView 4.0. GtkSourceView 4.0
+will still depend on GTK+ 3, but the release date is not yet determined.
+
+* All the deprecated APIs have been removed.
+* Only <gtksourceview/gtksource.h> can be included directly. There were already
+  warnings about it in GtkSourceView 3. The warnings have been changed to
+  errors.
+* Only the version 2 of the GtkSourceView language definition file format is
+  supported (for *.lang files, used for syntax highlighting). The support for
+  the version 1 has been dropped.
+* Add padding for future expansion in the Class structures.
+* Docs: add an intro with the pkg-config name.
+* Docs: write the first steps of the GtkSourceView 3 -> 4 porting guide.
+* Build fixes on Windows.
+* Improvements to the syntax highlighting of: JavaScript and PHP
+* Translation updates
 
 News in 3.24.1
 --------------
