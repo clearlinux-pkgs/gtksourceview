@@ -4,19 +4,20 @@
 #
 Name     : gtksourceview
 Version  : 4.0.0
-Release  : 19
+Release  : 20
 URL      : https://download.gnome.org/sources/gtksourceview/4.0/gtksourceview-4.0.0.tar.xz
 Source0  : https://download.gnome.org/sources/gtksourceview/4.0/gtksourceview-4.0.0.tar.xz
 Summary  : Libraries and include files for GtkSourceView
 Group    : Development/Tools
 License  : LGPL-2.1
+Requires: gtksourceview-data
 Requires: gtksourceview-lib
 Requires: gtksourceview-doc
-Requires: gtksourceview-data
 Requires: gtksourceview-locales
 BuildRequires : docbook-xml
 BuildRequires : gettext
 BuildRequires : go
+BuildRequires : gobject-introspection
 BuildRequires : gobject-introspection-dev
 BuildRequires : gtk-doc
 BuildRequires : gtk-doc-dev
@@ -30,6 +31,7 @@ BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(libxml-2.0)
 BuildRequires : python3
+BuildRequires : vala
 BuildRequires : valgrind
 Patch1: cve-2017-14108.patch
 
@@ -91,7 +93,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522119223
+export SOURCE_DATE_EPOCH=1523379482
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -110,7 +112,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1522119223
+export SOURCE_DATE_EPOCH=1523379482
 rm -rf %{buildroot}
 %make_install
 %find_lang gtksourceview-4
