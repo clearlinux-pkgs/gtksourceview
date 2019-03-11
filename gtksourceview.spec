@@ -4,16 +4,16 @@
 #
 Name     : gtksourceview
 Version  : 4.0.3
-Release  : 28
+Release  : 29
 URL      : https://download.gnome.org/sources/gtksourceview/4.0/gtksourceview-4.0.3.tar.xz
 Source0  : https://download.gnome.org/sources/gtksourceview/4.0/gtksourceview-4.0.3.tar.xz
-Summary  : Libraries and include files for GtkSourceView
+Summary  : GNOME library that extends GtkTextView
 Group    : Development/Tools
 License  : LGPL-2.1
-Requires: gtksourceview-data
-Requires: gtksourceview-lib
-Requires: gtksourceview-license
-Requires: gtksourceview-locales
+Requires: gtksourceview-data = %{version}-%{release}
+Requires: gtksourceview-lib = %{version}-%{release}
+Requires: gtksourceview-license = %{version}-%{release}
+Requires: gtksourceview-locales = %{version}-%{release}
 BuildRequires : buildreq-gnome
 BuildRequires : buildreq-golang
 BuildRequires : buildreq-meson
@@ -31,6 +31,7 @@ BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(libxml-2.0)
 BuildRequires : vala
 BuildRequires : vala-bin
+BuildRequires : vala-dev
 BuildRequires : valgrind
 Patch1: cve-2017-14108.patch
 
@@ -50,9 +51,10 @@ data components for the gtksourceview package.
 %package dev
 Summary: dev components for the gtksourceview package.
 Group: Development
-Requires: gtksourceview-lib
-Requires: gtksourceview-data
-Provides: gtksourceview-devel
+Requires: gtksourceview-lib = %{version}-%{release}
+Requires: gtksourceview-data = %{version}-%{release}
+Provides: gtksourceview-devel = %{version}-%{release}
+Requires: gtksourceview = %{version}-%{release}
 
 %description dev
 dev components for the gtksourceview package.
@@ -69,8 +71,8 @@ doc components for the gtksourceview package.
 %package lib
 Summary: lib components for the gtksourceview package.
 Group: Libraries
-Requires: gtksourceview-data
-Requires: gtksourceview-license
+Requires: gtksourceview-data = %{version}-%{release}
+Requires: gtksourceview-license = %{version}-%{release}
 
 %description lib
 lib components for the gtksourceview package.
@@ -101,7 +103,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536217214
+export SOURCE_DATE_EPOCH=1552334515
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -109,7 +111,7 @@ export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sect
 export FCFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -fstack-protector-strong -mzero-caller-saved-regs=used "
 export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -fstack-protector-strong -mzero-caller-saved-regs=used "
-%configure --disable-static
+%configure --disable-static --enable-vala
 make  %{?_smp_mflags}
 
 %check
@@ -120,10 +122,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1536217214
+export SOURCE_DATE_EPOCH=1552334515
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/gtksourceview
-cp COPYING %{buildroot}/usr/share/doc/gtksourceview/COPYING
+mkdir -p %{buildroot}/usr/share/package-licenses/gtksourceview
+cp COPYING %{buildroot}/usr/share/package-licenses/gtksourceview/COPYING
 %make_install
 %find_lang gtksourceview-4
 
@@ -279,6 +281,8 @@ cp COPYING %{buildroot}/usr/share/doc/gtksourceview/COPYING
 /usr/share/gtksourceview-4/styles/solarized-light.xml
 /usr/share/gtksourceview-4/styles/styles.rng
 /usr/share/gtksourceview-4/styles/tango.xml
+/usr/share/vala/vapi/gtksourceview-4.deps
+/usr/share/vala/vapi/gtksourceview-4.vapi
 
 %files dev
 %defattr(-,root,root,-)
@@ -406,8 +410,8 @@ cp COPYING %{buildroot}/usr/share/doc/gtksourceview/COPYING
 /usr/lib64/libgtksourceview-4.so.0.0.0
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/gtksourceview/COPYING
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/gtksourceview/COPYING
 
 %files locales -f gtksourceview-4.lang
 %defattr(-,root,root,-)
