@@ -4,7 +4,7 @@
 #
 Name     : gtksourceview
 Version  : 4.2.0
-Release  : 30
+Release  : 31
 URL      : https://download.gnome.org/sources/gtksourceview/4.2/gtksourceview-4.2.0.tar.xz
 Source0  : https://download.gnome.org/sources/gtksourceview/4.2/gtksourceview-4.2.0.tar.xz
 Summary  : GNOME library that extends GtkTextView
