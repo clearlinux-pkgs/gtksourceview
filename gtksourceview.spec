@@ -4,7 +4,7 @@
 #
 Name     : gtksourceview
 Version  : 4.2.0
-Release  : 31
+Release  : 32
 URL      : https://download.gnome.org/sources/gtksourceview/4.2/gtksourceview-4.2.0.tar.xz
 Source0  : https://download.gnome.org/sources/gtksourceview/4.2/gtksourceview-4.2.0.tar.xz
 Summary  : GNOME library that extends GtkTextView
@@ -36,9 +36,14 @@ BuildRequires : valgrind
 Patch1: cve-2017-14108.patch
 
 %description
-GtkSourceview is a library that adds syntax highlighting,
-line numbers, and other programming-editor features.
-GtkSourceView specializes these features for a code editor.
+GtkSourceView
+=============
+This is version 4.0.4 of GtkSourceView.
+GtkSourceView is a GNOME library that extends GtkTextView, the standard GTK+
+widget for multiline text editing. GtkSourceView adds support for syntax
+highlighting, undo/redo, file loading and saving, search and replace, a
+completion system, printing, displaying line numbers, and other features
+typical of a source code editor.
 
 %package data
 Summary: data components for the gtksourceview package.
@@ -103,14 +108,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552835092
+export SOURCE_DATE_EPOCH=1557013332
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FCFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FFLAGS="$CFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -fstack-protector-strong -mzero-caller-saved-regs=used "
-export CXXFLAGS="$CXXFLAGS -O3 -Os -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CFLAGS="$CFLAGS -O3 -Os -fcf-protection=full -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -fstack-protector-strong "
+export FCFLAGS="$CFLAGS -O3 -Os -fcf-protection=full -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -fstack-protector-strong "
+export FFLAGS="$CFLAGS -O3 -Os -fcf-protection=full -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -fstack-protector-strong "
+export CXXFLAGS="$CXXFLAGS -O3 -Os -fcf-protection=full -fdata-sections -ffat-lto-objects -ffunction-sections -flto=4 -fno-semantic-interposition -fstack-protector-strong "
 %configure --disable-static --enable-vala
 make  %{?_smp_mflags}
 
@@ -122,7 +127,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1552835092
+export SOURCE_DATE_EPOCH=1557013332
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gtksourceview
 cp COPYING %{buildroot}/usr/share/package-licenses/gtksourceview/COPYING
