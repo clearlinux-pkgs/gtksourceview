@@ -4,7 +4,7 @@
 #
 Name     : gtksourceview
 Version  : 4.8.0
-Release  : 38
+Release  : 39
 URL      : https://download.gnome.org/sources/gtksourceview/4.8/gtksourceview-4.8.0.tar.xz
 Source0  : https://download.gnome.org/sources/gtksourceview/4.8/gtksourceview-4.8.0.tar.xz
 Summary  : Source code editing widget
