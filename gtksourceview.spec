@@ -4,7 +4,7 @@
 #
 Name     : gtksourceview
 Version  : 4.8.2
-Release  : 43
+Release  : 44
 URL      : https://download.gnome.org/sources/gtksourceview/4.8/gtksourceview-4.8.2.tar.xz
 Source0  : https://download.gnome.org/sources/gtksourceview/4.8/gtksourceview-4.8.2.tar.xz
 Summary  : Source code editing widget
@@ -15,7 +15,6 @@ Requires: gtksourceview-lib = %{version}-%{release}
 Requires: gtksourceview-license = %{version}-%{release}
 Requires: gtksourceview-locales = %{version}-%{release}
 BuildRequires : buildreq-gnome
-BuildRequires : buildreq-golang
 BuildRequires : buildreq-meson
 BuildRequires : gobject-introspection
 BuildRequires : gobject-introspection-dev
@@ -88,7 +87,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1647042001
+export SOURCE_DATE_EPOCH=1647637757
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
