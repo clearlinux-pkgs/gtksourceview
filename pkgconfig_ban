@@ -2,3 +2,4 @@
 # but are undesirable. One entry per line, no whitespace.
 gladeui-2.0
 gtk+-quartz-3.0
+gtk4-quartz

@@ -1,29 +1,231 @@
-News in 4.8.3, 2022-03-18
+News in 5.4.0, 2022-03-18
 -------------------------
 
-* Adds support for more Pango font-variants
-* Style updates to solarized-dark, solarized-light
-* Language updates to lean, rst, c, gtk-doc, javascript, and json
-* Translation updates
+ * Build system fixes for Windows and macOS
+ * Style updates for Adwaita, Adwaita-dark, solarized-light, solarized-dark,
+   Classic, and a new Cobalt-light variant
+ * Language improvements for C, C++, GTK-DOC, and JSON
+ * Various header fixes
+ * Additional API to append/prepend search paths for language manager
+ * Allow loading language specifications via GResources
+ * A new "weight" attribute for style schemes which allows more control
+   than just bold="true"
+ * Various Vim emulation fixes
+ * GtkSourceView now requires GTK 4.6 for various CSS improvements
+ * Additional performance fixes to reduce overdraws by GPU
+ * Translation updates
 
-News in 4.8.2, 2021-09-03
+News in 5.3.2, 2022-01-09
 -------------------------
-* New syntax highlighting definition file for: STAR
-* Improved syntax highlighting definition file for: YARA, LLVM
-* GtkSourceMap now avoids animation while scrolling in response
-  to clicks. This should help prevent some hysteresis.
-* GObject Introspection fixes
-* Fixed decrement of negative numbers in GtkSourceView
-* Improvements to style schemes: kate
-* Fixed build-time macros for version checking in some scenarios
-* Translation updates
 
-News in 4.8.1, 2021-03-02
+This is a development release as we progress towards GNOME 42. It is
+not a stable release and is intended for testing purposes.
+
+ * Support ctrl+shift+v in Vim insert mode to paste similar to terminal
+ * Improve placement of H/L movements in Vim emulation
+ * Various build system improvements
+ * Fix running testsuite before installation
+ * Bump GTK required version to match actual requirements in code
+ * Remove CSS line-height usage until we can depend on GTK 4.6
+
+News in 5.3.1, 2022-01-06
 -------------------------
-* Fix highlighting in presence of byte-order-marks (BOM)
-* meson.lang: Update keywords to 0.55.3 syntax
-* cmake.lang: Update keywords to 3.18.2 syntax
-* go.lang: make "0i" syntax highlight as integer
+
+This is a development release as we progress towards GNOME 42. It is
+not a stable release and is intended for testing purposes.
+
+ * python3.lang: add support for .pyi glob and f-strings.
+ * c.lang: Hightlight _t and _T types.
+ * rust.lang: You can now style lifetime and self in style schemes.
+ * javascript.lang: Support for shebang's have been added.
+ * GObject Introspection improvements.
+ * Fixes to work around improper selections in some style-schemes.
+ * Vim: many improvements to and compatibility fixes in emulation.
+ * Tracing: More modules now use sysprof for tracing information.
+ * Ctrl+shift+u works again when auto-indent is enabled, which was
+   stealing input before ctrl+shift+u could process the unicode input.
+ * Gutter renderers now more aggresively cache color information for
+   drawing highlights and more.
+ * GtkSourceGutterRendererLines avoids using GMarkup just for bold
+   attributes as using a single referenced PangoAttrList is faster.
+ * Adwaita and Adwaita-dark have been updated and improved along with
+   more specific highlighting for a number of languages.
+ * You can now set `bold="false"` on current-line-number to disable
+   bold weight on the current line number.
+ * Drawing of background grids have been improved when margins are used
+   as well as trying harder to align to the character grid and taking
+   CSS line-height into account when possible.
+ * Current line number is no longer drawn specially when selections are
+   active. The highlight-current-line is also disabled during selections.
+ * GtkSourceFileLoader now tries to use aligned pages when loading
+   buffers from storage and reads in a multiple of the page size.
+ * Build fixes for macOS.
+ * Translation updates.
+
+News in 5.3.0, 2021-12-08
+-------------------------
+
+This is a development release as we progress towards GNOME 42. It is
+not a stable release and is intended for testing purposes.
+
+ * Documentation has been updated to use gi-docgen.
+ * Style schemes now support the <metadata> tag similar to languages.
+   This can be used by style schemes to denote if they are light or dark
+   mode and a relative scheme for use when desktop dark mode preferences
+   have changed.
+ * Selections for most style schemes bundled with GtkSourceView are now
+   translucent and do not modify the foreground color. This performs very
+   well now that we have GL based rendering in GTK.
+ * The Vala bindings have moved from the Gtk namespace to the GtkSource
+   namespace to match the bindings in all other languages. While it is
+   unfortunate that this has happened after 5.0, it is still early enough
+   that we can avoid having to maintain a clashing namespace with Gtk.
+ * A new Vim emulator in the form of GtkSourceVimIMContext. This can emulate
+   basic features such as Normal, Insert, Replace, Visual, Visual Line, and
+   Command Bar modes. Additionally, many Vim-style motions and text-objects
+   are supported. Registers, Marks, and Jumplists are also partially suppored.
+   The + and * registers can be used to integrate with both the system and
+   primary GDK clipboards. Various commands are available in teh command bar
+   such as nohl, set, :s, :join, and more.
+ * Updated language specs: rst.lang, c.lang, cpp.lang, vala.lang, spice.lang,
+   lean.lang, and yara.lang.
+ * Updated style schemes which improve the quality of output when used with
+   non-standard GTK themes.
+ * A new GtkSourceStyleSchemePreview widget.
+ * The GtkSourceStyleSchemeChooserWidget now uses GtkSourceStyleSchemePreview
+   to display style schemes.
+ * Improve autocompletion styling when used with libadwaita.
+ * Improvements to cell alignment in the gutter particularly useful when
+   the CSS line-height attribute is used.
+ * Many fit-n-finish improvements to GtkSourceMap.
+ * The gutter line renderer now adapts to more situations where it will
+   need to redraw based on highlight-current-line.
+ * Build system improvements.
+ * Translation updates.
+
+More information can be found at:
+
+ * https://blogs.gnome.org/chergert/2021/11/01/gtksourceview-is-getting-a-vim-emulator/
+ * https://blogs.gnome.org/chergert/2021/10/12/gtksourcestyleschemepreview/
+
+News in 5.2.0, 2021-09-03
+-------------------------
+
+GtkSourceView 5.2.0 is the release corresponding with GNOME 41.0 for
+GTK 4-based applications. We expect performance improvements when
+combined with GTK 4.4's NGL renderer, especially on HiDPI systems.
+
+Changes since 5.1.0
+
+ * Add support for drawing a highlight line between the gutter and
+   text area. kate.xml uses this to more closely match Kate.
+ * Python 3 is now preferred over Python 2.
+ * Fixes for moving words.
+ * A new scheduler API to help with background buffer work
+ * Improvements to YARA syntax.
+ * Translation updates.
+
+More information can be found at:
+
+ * https://blogs.gnome.org/chergert/2021/07/05/gtksourceview-searching-with-pcre2/
+ * https://blogs.gnome.org/chergert/2021/06/27/performance-improvements-in-text-editing/
+
+News in 5.1.0, 2021-07-19
+-------------------------
+
+GtkSourceView 5.1.0 is the first alpha release of GtkSourceView as we
+progress towards the 5.2 release.
+
+Changes since 5.0.0
+
+ * Fix GtkSourceView 5.0 version check macros
+ * Improve font and styling of GtkSourceMap
+ * Improve input gestures to make GtkSourceMap more predictable and
+   reduce scroll latency
+ * Various GObject Introspection fixes
+ * Avoid a number of string copies in CSS processing
+ * Avoid alpha compositing when drawing the right-margin
+ * Improve PCRE2 support to perform closer to GRegex
+ * GtkSourceSearchContext is now powered by PCRE2 when regexes are in use
+ * javascript.lang, typescript.lang, html.lang: alter character ranges to
+   work with PCRE2 by using \N{U+} style escapes
+ * groovy.lang: add mimetype for groovy
+ * sh.lang: fix short parameter expansion
+ * powershell.lang: add support for powershell 7
+ * Kate: fix matched brackets color
+ * Adwaita: fix selection styling to support libadwaita
+ * Translation updates
+
+News in 5.0.0, 2021-03-19
+-------------------------
+
+GtkSourceView 5.0 is the first stable release of GtkSourceView targeting the
+GTK 4 toolkit. It is the culmination of about a year of development.
+
+Numerous new features were added that are not available in the 4.8 series of
+GtkSourceView.
+
+Notably:
+
+ * A new GListModel-based completion engine with a refresh on autocompletion
+   interface styling which was upstreamed from GNOME Builder.
+ * Syntax languages are now implemented using PCRE2 instead of GRegex which
+   also allowed for enabling the PCRE2 JIT for faster syntax highlighting.
+ * GtkSourceView can now integrate with Sysprof to generate performance
+   information. This may be helpful to application developers to help optimize
+   application rendering on GTK 4.
+ * Many internal components have become native GtkWidgets.
+ * A new code-snippet engine with an XML-based language have been added which
+   were upstreamed from GNOME Builder.
+ * Support for interactive tooltips using GtkSourceHover which was upstreamed
+   from GNOME Builder.
+ * You can now write custom indenters using GtkSourceIndenter which was
+   upstreamed from GNOME Builder.
+ * The overview map now bundles a custom "BuilderBlocks" font which was
+   upstreamed from GNOME Builder.
+ * Undo management is now part of GTK 4.
+ * Translation updates.
+
+
+News in 4.99.0, 2021-02-12
+--------------------------
+
+GtkSourceView 4.99.0 is a beta release targeting GTK 4 and will eventually
+become GtkSourceView 5.0.
+
+It is the largest release of GtkSourceView in many releases and contains new
+subsystems and performance improvements. More than 300 commits are part of this
+release touching everything from syntax highlighting to a new snippet engine.
+
+As GtkSourceView 4.99 moves to using PCRE2, it is possible that some language
+definitions will need tweaking for differences between PCRE and PCRE2. So far,
+very few changes were necessary within the GtkSourceView codebase but external
+language specifications may require some tweaks. In particular, improper
+escaping is the only incompatability seen thus far.
+
+* Improvements when converting Pango styling to CSS
+* Build system improvements
+* GObject modernization
+* A new completion engine has been added that reduces overhead and fits with
+  GTK 4 lazy lists more closely. It is largely based on the code and design
+  from GNOME Builder.
+* GtkSourceGutterRenderers are now a GtkWidget allowing more interesting
+  features to be implemented by applications.
+* Undo management was moved into GTK 4 directly and is no longer part of
+  GtkSourceView.
+* Syntax highlighting has moved to PCRE2 and utilizes a JIT when available.
+* GtkSourceBuffer has a new "cursor-moved" signal.
+* A new font "Builder Blocks" from GNOME Builder has been bundled for use
+  in the GtkSourceMap.
+* To speed up gutter operations, a new GtkSourceLines abstraction has been
+  added which allows fewer passes across the source buffer to extract features
+  for display.
+* A new snippet engine based originally upon GNOME Builder's but with a
+  new snippet language based on XML similar to language-specs and
+  style-schemes.
+* A new "Assistant" abstraction which can be used for tooltips and eventually
+  hover providers.
+* Updates to go.lang, cmake.lang, meson.lang, csharp.lang.
 * Translation updates
 
 News in 4.8.0, 2020-09-12

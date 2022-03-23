@@ -1,5 +1,5 @@
 PKG_NAME := gtksourceview
-URL = https://download.gnome.org/sources/gtksourceview/4.8/gtksourceview-4.8.3.tar.xz
+URL = https://download.gnome.org/sources/gtksourceview/5.4/gtksourceview-5.4.0.tar.xz
 ARCHIVES = 
 
 include ../common/Makefile.common
