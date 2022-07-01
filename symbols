@@ -784,6 +784,7 @@ libgtksourceview-5.so.0:gtk_source_vim_registers_get
 libgtksourceview-5.so.0:gtk_source_vim_registers_get_numbered
 libgtksourceview-5.so.0:gtk_source_vim_registers_get_type
 libgtksourceview-5.so.0:gtk_source_vim_registers_new
+libgtksourceview-5.so.0:gtk_source_vim_registers_reset
 libgtksourceview-5.so.0:gtk_source_vim_registers_set
 libgtksourceview-5.so.0:gtk_source_vim_replace_get_type
 libgtksourceview-5.so.0:gtk_source_vim_replace_new
