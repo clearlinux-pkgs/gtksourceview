@@ -4,7 +4,7 @@
 #
 Name     : gtksourceview
 Version  : 5.6.1
-Release  : 50
+Release  : 51
 URL      : https://download.gnome.org/sources/gtksourceview/5.6/gtksourceview-5.6.1.tar.xz
 Source0  : https://download.gnome.org/sources/gtksourceview/5.6/gtksourceview-5.6.1.tar.xz
 Summary  : Source code editing widget
