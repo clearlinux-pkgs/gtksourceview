@@ -1,3 +1,37 @@
+News in 5.14.0, 2024-09-13
+--------------------------
+
+This is a stable release for GNOME 47.0
+
+ * Fix an issue where the gutter would not redraw when focus changes.
+ * Add support for Groff syntax
+
+News in 5.13.1, 2024-08-04
+--------------------------
+
+This is an unstable release update for GNOME 47.beta
+
+ * Documentation improvements
+ * Improve performance of BuilderBlocks font loading. Some of this
+   effort required changes to the TTF, so user testing with a wide
+   variety of languages is desired. This should reduce startup time
+   of GtkSourceView using applications.
+ * gtk-doc.lang: highlight `backtick` spans
+ * c.lang: highlight [[]] style attributes
+ * java.lang: improve escaped character matching
+ * Adwaita.xml, Adwaita-dark.xml: style updates to track platform
+   changes for GNOME 47.
+
+News in 5.13.0, 2024-06-28
+--------------------------
+
+This is an unstable release update for GNOME 47.alpha
+
+ * Ensure gutter renderers are released during dispose
+ * Make default auto-indenter keep indentation when cursor is at line start
+ * python3.lang: Fix f-string in curly braces to have no-spellcheck applied
+ * Translation updates
+
 News in 5.12.1, 2024-05-30
 --------------------------
 
